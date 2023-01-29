@@ -25,10 +25,12 @@ class ApiManager {
     // http.get(Uri.parse('a7ot kol url bs msh a7sn 7aga 3shan baramter btt3yer))
   }
 
-  static Future<NewsResponse> getNews(String sourceId) async {
+  static Future<NewsResponse> getNews(
+      {String? sourceId, String? searchKeyword}) async {
     var url = Uri.https(baseUrl, '/v2/everything', {
       'apiKey': apiKey,
       'sources': sourceId,
+      'q': searchKeyword,
     });
     var responce = await http.get(url);
     return NewsResponse.fromJson(jsonDecode(responce.body));

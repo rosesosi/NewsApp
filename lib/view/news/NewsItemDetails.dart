@@ -22,7 +22,7 @@ class _NewsItemDetailsState extends State<NewsItemDetails> {
   }
 
 // open in the same app
-  Future<void> openUrlExternalBrowser(String? url) async {
+  Future<void> openUrlInApp(String? url) async {
     if (url == null) {
       return;
     }
@@ -35,11 +35,15 @@ class _NewsItemDetailsState extends State<NewsItemDetails> {
   }
 
   //open in extrnal browser
-  //  Future<void> launchUrll() async{
-  //   if(!await launchUrl(url)){
-  //     throw 'could not lanch $url';
-  //   }
-  //  }
+  Future<void> openUrlInBrowser(String? url) async {
+    if (url == null) {
+      return;
+    }
+    Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw 'could not lanch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +112,7 @@ class _NewsItemDetailsState extends State<NewsItemDetails> {
                 ),
                 IconButton(
                     onPressed: () {
-                      openUrlExternalBrowser(argsNews.url);
+                      openUrlInApp(argsNews.url);
                     },
                     icon: Icon(
                       Icons.arrow_circle_right,

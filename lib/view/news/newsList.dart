@@ -6,14 +6,13 @@ import 'package:news_app/view/news/news_item.dart';
 
 class NewsList extends StatelessWidget {
   Source source;
-
   NewsList(this.source);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: FutureBuilder<NewsResponse>(
-        future: ApiManager.getNews(source.id ?? ''),
+        future: ApiManager.getNews(sourceId: source.id ?? ''),
         builder: (buildContext, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
