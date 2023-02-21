@@ -17,18 +17,23 @@ class NewsDetailsScreen extends StatefulWidget {
 class _NewsDetailsScreenState
     extends BaseState<NewsDetailsScreen, CategoryNewsListViewModel>
     implements NewsNavigator {
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   viewModel.loadNewsSources()
-  // }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      final Category args =
+          ModalRoute.of(context)?.settings.arguments as Category;
+      viewModel.loadNewsSources(args.categoryId);
+    });
+//    viewModel.loadNewsSources()
+  }
+
   @override
   Widget build(BuildContext context) {
     final Category args =
         ModalRoute.of(context)?.settings.arguments as Category;
 
-    viewModel.loadNewsSources(args.categoryId);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -57,7 +62,9 @@ class _NewsDetailsScreenState
                     children: [
                       Text(viewModel.errorMessage!),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          viewModel.loadNewsSources(args.categoryId);
+                        },
                         child: const Text('Try Again'),
                       )
                     ],
