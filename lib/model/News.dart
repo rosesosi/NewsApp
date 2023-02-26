@@ -1,4 +1,4 @@
-import 'package:news_app/utils/Source.dart';
+import 'package:news_app/model/Source.dart';
 
 /// source : {"id":"abc-news","name":"ABC News"}
 /// author : "Caleigh Bartash"

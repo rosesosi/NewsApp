@@ -1,17 +1,26 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/api/api_manager.dart';
-import 'package:news_app/utils/Source.dart';
+import 'package:news_app/domain/repository/SourcesRepositoryContract.dart';
+import 'package:news_app/model/Source.dart';
 
 class CategoryViewModel extends Cubit<CategoryWidgetState> {
-  CategoryViewModel() : super(LoadingState());
+  SourcesRepositiryContract repositiry;
+
+  CategoryViewModel(this.repositiry) : super(LoadingState());
 
   void loadSources(String categoryID) async {
     try {
-      var response = await ApiManager.getSources(categoryID);
-      if (response.status == 'error') {
-        emit(ErrorState(response.message!));
-      } else {
-        emit(SourcesLoadingState(response.sources!));
+      var response = await repositiry.getSources(categoryID);
+      // var response = await ApiManager.getSources(categoryID);
+
+      if (response == null) {
+        emit(ErrorState("Error loading NewsResourcs"));
+      }
+      //if (response.status == 'error') {
+      //  emit(ErrorState(response.message!));
+      // }
+      else {
+        emit(SourcesLoadingState(response));
+        // emit(SourcesLoadingState(response.sources!));
         emit(MessageState("sources load sucssesfuly"));
       }
     } catch (e) {

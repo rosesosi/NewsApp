@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/utils/Source.dart';
+import 'package:news_app/data/repository/NewsRepoImp.dart';
+import 'package:news_app/model/Source.dart';
 import 'package:news_app/view/news/NewsListBlocViewModel.dart';
 import 'package:news_app/view/news/news_item.dart';
 
@@ -15,11 +16,14 @@ class NewsList extends StatefulWidget {
 
 class _NewsListState extends State<NewsList> {
   // @override
-  NewsListBViewModel viewModel = NewsListBViewModel();
+  NewsListBViewModel viewModel = NewsListBViewModel(injectNewsRepository());
+
+  //NewsListBViewModel viewModel = NewsListBViewModel();
 
   @override
   void initState() {
     // TODO: implement initState
+
     super.initState();
     viewModel.getNewsBySourceId(widget.source.id!);
   }

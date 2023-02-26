@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/base/base_navigator.dart';
 import 'package:news_app/base/base_viewModel.dart';
-import 'package:news_app/utils/dialog_utils.dart';
+import 'package:news_app/model/dialog_utils.dart';
 
 abstract class BaseState<T extends StatefulWidget, VM extends BaseViewModel>
     extends State<T> implements BaseNavigator {

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:news_app/model/category.dart';
 import 'package:news_app/my_theme.dart';
 import 'package:news_app/ui/category_grid_view_item.dart';
-import 'package:news_app/utils/category.dart';
 import 'package:news_app/view/settings/SettingScreen.dart';
 
 class HomeScreen extends StatelessWidget {

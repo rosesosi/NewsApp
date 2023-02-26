@@ -1,4 +1,4 @@
-import 'package:news_app/utils/News.dart';
+import 'package:news_app/model/News.dart';
 
 /// status : "ok"
 /// totalResults : 2410

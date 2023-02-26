@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/utils/category.dart';
+import 'package:news_app/model/category.dart';
 import 'package:news_app/view/news_details_screen.dart';
 
 class CategoryGridViewItem extends StatelessWidget {

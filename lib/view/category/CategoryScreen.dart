@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/utils/category.dart';
-import 'package:news_app/utils/dialog_utils.dart';
+import 'package:news_app/data/repository/SourcesRepoImp.dart';
+import 'package:news_app/model/category.dart';
+import 'package:news_app/model/dialog_utils.dart';
 import 'package:news_app/view/category/CategoryTabWidget.dart';
 import 'package:news_app/view/category/CategoryViewModel.dart';
 import 'package:news_app/view/searchPage.dart';
@@ -15,7 +16,9 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-  CategoryViewModel viewModel = CategoryViewModel();
+  CategoryViewModel viewModel = CategoryViewModel(injectSourceRepo());
+
+  // CategoryViewModel viewModel = CategoryViewModel();
 
   @override
   void initState() {

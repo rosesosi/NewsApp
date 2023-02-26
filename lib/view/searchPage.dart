@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/api/api_manager.dart';
-import 'package:news_app/utils/News.dart';
+import 'package:news_app/model/News.dart';
 import 'package:news_app/view/news/news_item.dart';
 
 class SearchPage extends StatefulWidget {

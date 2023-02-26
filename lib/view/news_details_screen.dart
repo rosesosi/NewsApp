@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/base/BaseState.dart';
-import 'package:news_app/utils/category.dart';
+import 'package:news_app/model/category.dart';
 import 'package:news_app/view/category/CategoryTabWidget.dart';
 import 'package:news_app/view/category/news_details_ViewModel.dart';
 import 'package:news_app/view/searchPage.dart';

@@ -1,7 +1,7 @@
 import 'package:news_app/api/api_manager.dart';
 import 'package:news_app/base/base_navigator.dart';
 import 'package:news_app/base/base_viewModel.dart';
-import 'package:news_app/utils/News.dart';
+import 'package:news_app/model/News.dart';
 
 abstract class NewsListNavigator implements BaseNavigator {}
 
