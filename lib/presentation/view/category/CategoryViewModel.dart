@@ -1,15 +1,19 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/domain/repository/SourcesRepositoryContract.dart';
-import 'package:news_app/model/Source.dart';
+import 'package:news_app/domain/model/Source.dart';
+import 'package:news_app/domain/usecases/GetSourceByCategoryIDUseCase.dart';
 
 class CategoryViewModel extends Cubit<CategoryWidgetState> {
-  SourcesRepositiryContract repositiry;
+  GetSourcesByCategoryIdUseCase sourcesByCategoryIdUseCase;
 
-  CategoryViewModel(this.repositiry) : super(LoadingState());
+  // SourcesRepositiryContract repositiry;
+  //
+  // CategoryViewModel(this.repositiry) : super(LoadingState());
+  CategoryViewModel(this.sourcesByCategoryIdUseCase) : super(LoadingState());
 
   void loadSources(String categoryID) async {
     try {
-      var response = await repositiry.getSources(categoryID);
+      //  var response = await repositiry.getSources(categoryID);
+      var response = await sourcesByCategoryIdUseCase.invoke(categoryID);
       // var response = await ApiManager.getSources(categoryID);
 
       if (response == null) {

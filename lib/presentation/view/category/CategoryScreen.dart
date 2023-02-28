@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/data/model/category.dart';
+import 'package:news_app/data/model/dialog_utils.dart';
 import 'package:news_app/data/repository/SourcesRepoImp.dart';
-import 'package:news_app/model/category.dart';
-import 'package:news_app/model/dialog_utils.dart';
-import 'package:news_app/view/category/CategoryTabWidget.dart';
-import 'package:news_app/view/category/CategoryViewModel.dart';
-import 'package:news_app/view/searchPage.dart';
+
+import 'package:news_app/presentation/view/category/CategoryTabWidget.dart';
+import 'package:news_app/presentation/view/category/CategoryViewModel.dart';
+import 'package:news_app/presentation/view/news/di.dart';
+
+import 'package:news_app/presentation/view/searchPage.dart';
 // import 'package:http/http.dart' as http;
 
 class CategoryScreen extends StatefulWidget {
@@ -16,7 +19,8 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-  CategoryViewModel viewModel = CategoryViewModel(injectSourceRepo());
+  //CategoryViewModel viewModel = CategoryViewModel(injectSourceRepo());
+  CategoryViewModel viewModel = CategoryViewModel(injectGetSource());
 
   // CategoryViewModel viewModel = CategoryViewModel();
 

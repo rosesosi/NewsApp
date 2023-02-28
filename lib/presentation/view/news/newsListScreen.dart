@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/data/repository/NewsRepoImp.dart';
-import 'package:news_app/model/Source.dart';
-import 'package:news_app/view/news/NewsListBlocViewModel.dart';
-import 'package:news_app/view/news/news_item.dart';
+import 'package:news_app/domain/model/Source.dart';
+import 'package:news_app/presentation/view/news/NewsListBlocViewModel.dart';
+import 'package:news_app/presentation/view/news/di.dart';
+import 'package:news_app/presentation/view/news/news_item.dart';
 
 class NewsList extends StatefulWidget {
   Source source;
@@ -16,7 +16,9 @@ class NewsList extends StatefulWidget {
 
 class _NewsListState extends State<NewsList> {
   // @override
-  NewsListBViewModel viewModel = NewsListBViewModel(injectNewsRepository());
+  NewsListBViewModel viewModel = NewsListBViewModel(injectGetNewsBYSourceID());
+
+  //NewsListBViewModel viewModel = NewsListBViewModel(injectNewsRepository());
 
   //NewsListBViewModel viewModel = NewsListBViewModel();
 

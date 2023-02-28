@@ -1,6 +1,6 @@
 import 'package:news_app/api/api_manager.dart';
+import 'package:news_app/domain/model/Source.dart';
 import 'package:news_app/domain/repository/SourcesRepositoryContract.dart';
-import 'package:news_app/model/Source.dart';
 
 class SourcesRemoteDataSource implements SourcesDataSource {
   ApiManager apiManager;
@@ -10,7 +10,8 @@ class SourcesRemoteDataSource implements SourcesDataSource {
   @override
   Future<List<Source>?> getSources(String CategoryId) async {
     var data = await apiManager.getSources(CategoryId);
-    return data.sources;
+    // converion from dto to domain models
+    return data.sources?.map((sourceDTO) => sourceDTO.toDominSource()).toList();
   }
 }
 

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:news_app/my_theme.dart';
+import 'package:news_app/presentation/view/home_screen.dart';
+import 'package:news_app/presentation/view/news/NewsItemDetails.dart';
+import 'package:news_app/presentation/view/news_details_screen.dart';
+import 'package:news_app/presentation/view/searchPage.dart';
+import 'package:news_app/presentation/view/settings/SettingScreen.dart';
+import 'package:news_app/presentation/view/splash_screen.dart';
 import 'package:news_app/provider/SettingsProvider.dart';
-import 'package:news_app/view/home_screen.dart';
-import 'package:news_app/view/news/NewsItemDetails.dart';
-import 'package:news_app/view/news_details_screen.dart';
-import 'package:news_app/view/searchPage.dart';
-import 'package:news_app/view/settings/SettingScreen.dart';
-import 'package:news_app/view/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {

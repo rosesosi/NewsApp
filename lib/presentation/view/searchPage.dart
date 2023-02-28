@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/api/api_manager.dart';
-import 'package:news_app/model/News.dart';
-import 'package:news_app/view/news/news_item.dart';
+import 'package:news_app/data/model/NewsDTO.dart';
+import 'package:news_app/presentation/view/news/news_item.dart';
 
 class SearchPage extends StatefulWidget {
   static const String routeName = 'Search';
@@ -12,10 +12,10 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   String? query = ' ';
-  List<News> newDataList = [];
+  List<NewsDTO> newDataList = [];
 
-  List<News> search() {
-    ApiManager.getNews(searchKeyword: query).then((newResponse) {
+  List<NewsDTO> search() {
+    ApiManager.getInstance().getNews(searchKeyword: query).then((newResponse) {
       newDataList = newResponse.articles ?? [];
     }).catchError((error) {
       print('error during search !! $error');

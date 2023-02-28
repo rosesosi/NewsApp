@@ -1,4 +1,4 @@
-import 'package:news_app/model/Source.dart';
+import 'package:news_app/domain/model/Source.dart';
 
 abstract class SourcesRepositiryContract {
   Future<List<Source>?> getSources(String categoryID);

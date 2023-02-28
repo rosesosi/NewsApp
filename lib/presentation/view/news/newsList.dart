@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/base/BaseState.dart';
-import 'package:news_app/model/Source.dart';
-import 'package:news_app/view/news/NewsListViewModel.dart';
-import 'package:news_app/view/news/news_item.dart';
+import 'package:news_app/domain/model/Source.dart';
+import 'package:news_app/presentation/view/news/NewsListViewModel.dart';
+import 'package:news_app/presentation/view/news/news_item.dart';
 import 'package:provider/provider.dart';
 
 class NewsList extends StatefulWidget {

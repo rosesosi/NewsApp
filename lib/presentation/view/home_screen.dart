@@ -1,26 +1,53 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:news_app/data/model/category.dart';
 import 'package:news_app/my_theme.dart';
-import 'package:news_app/provider/SettingsProvider.dart';
-import 'package:news_app/view/home_screen.dart';
-import 'package:news_app/view/settings/language_bottom_sheet.dart';
-import 'package:provider/provider.dart';
+import 'package:news_app/presentation/category_grid_view_item.dart';
+import 'package:news_app/presentation/view/settings/SettingScreen.dart';
 
-class SettingScreen extends StatefulWidget {
-  static const String routeName = 'setting';
+class HomeScreen extends StatelessWidget {
+  static const String routeName = 'HomeScreen';
 
-  @override
-  State<SettingScreen> createState() => _SettingScreenState();
-}
+  List<Category> categoryList = [
+    Category(
+        categoryId: "sports",
+        categoryImage: "assets/images/ball.png",
+        categoryTitle: "Sports",
+        categoryBackgroundColor: const Color.fromARGB(255, 201, 28, 34)),
+    Category(
+        categoryId: "general",
+        categoryImage: "assets/images/Politics.png",
+        categoryTitle: "Politics",
+        categoryBackgroundColor: const Color.fromARGB(255, 0, 62, 144)),
+    Category(
+        categoryId: "health",
+        categoryImage: "assets/images/health.png",
+        categoryTitle: "Health",
+        categoryBackgroundColor: const Color.fromARGB(255, 237, 30, 121)),
+    Category(
+        categoryId: "business",
+        categoryImage: "assets/images/bussines.png",
+        categoryTitle: "Bussines",
+        categoryBackgroundColor: const Color.fromARGB(255, 207, 126, 72)),
+    Category(
+        categoryId: "technology",
+        categoryImage: "assets/images/environment.png",
+        categoryTitle: "Technology",
+        categoryBackgroundColor: const Color.fromARGB(255, 72, 130, 207)),
+    Category(
+        categoryId: "science",
+        categoryImage: "assets/images/science.png",
+        categoryTitle: "science",
+        categoryBackgroundColor: const Color.fromARGB(255, 242, 211, 82)),
+  ];
 
-class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
-    var settingProvider = Provider.of<SettingsProvider>(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text(AppLocalizations.of(context)!.settings),
+        title: Text(AppLocalizations.of(context)!.projectTitle),
         centerTitle: true,
       ),
       drawer: Drawer(
@@ -95,60 +122,38 @@ class _SettingScreenState extends State<SettingScreen> {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.all(25),
-        decoration: const BoxDecoration(
-            color: Colors.transparent,
-            image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('assets/images/pattern.png'))),
+        padding: const EdgeInsets.all(10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              AppLocalizations.of(context)!.language,
-              style: Theme.of(context).textTheme.headline6,
-              textAlign: TextAlign.start,
+              'Pick your category \n of interest',
+              style: Theme.of(context)
+                  .textTheme
+                  .headline6!
+                  .copyWith(color: Colors.grey, fontSize: 22),
             ),
             SizedBox(
-              height: 20,
+              height: 8,
             ),
-            Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: 10,
-              ),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  border:
-                      Border.all(width: 1, color: MyTheme.lightprimaryColor)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    settingProvider.currentLang == 'en' ? 'English' : 'العربية',
-                    style: TextStyle(color: MyTheme.lightprimaryColor),
-                  ),
-                  IconButton(
-                      onPressed: () {
-                        showLanguageBottomSheet();
-                      },
-                      icon: Icon(
-                        Icons.arrow_drop_down_circle,
-                        color: MyTheme.lightprimaryColor,
-                      )),
-                ],
+            Expanded(
+              child: GridView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8,
+                    childAspectRatio: 6 / 7),
+                itemBuilder: (context, index) => CategoryGridViewItem(
+                  index: index,
+                  category: categoryList[index],
+                ),
+                itemCount: categoryList.length,
               ),
             ),
           ],
         ),
       ),
     );
-  }
-
-  void showLanguageBottomSheet() {
-    showModalBottomSheet(
-        context: context,
-        builder: (buildContext) {
-          return LanguageBottomSheet();
-        });
   }
 }

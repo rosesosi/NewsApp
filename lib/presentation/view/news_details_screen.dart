@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/base/BaseState.dart';
-import 'package:news_app/model/category.dart';
-import 'package:news_app/view/category/CategoryTabWidget.dart';
-import 'package:news_app/view/category/news_details_ViewModel.dart';
-import 'package:news_app/view/searchPage.dart';
+import 'package:news_app/data/model/category.dart';
+import 'package:news_app/presentation/view/category/CategoryTabWidget.dart';
+import 'package:news_app/presentation/view/category/news_details_ViewModel.dart';
+import 'package:news_app/presentation/view/searchPage.dart';
 import 'package:provider/provider.dart';
 // import 'package:http/http.dart' as http;
 

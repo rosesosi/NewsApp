@@ -1,6 +1,6 @@
 import 'package:news_app/data/dataSource/NewsRemoteDataSource.dart';
+import 'package:news_app/domain/model/News.dart';
 import 'package:news_app/domain/repository/NewsRepositoryContract.dart';
-import 'package:news_app/model/News.dart';
 
 class NewsRepoImpl implements NewsRepositoryContract {
   NewsDataSource dataSource;

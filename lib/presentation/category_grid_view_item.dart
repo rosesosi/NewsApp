@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/model/category.dart';
-import 'package:news_app/view/news_details_screen.dart';
+import 'package:news_app/data/model/category.dart';
+import 'package:news_app/presentation/view/news_details_screen.dart';
 
 class CategoryGridViewItem extends StatelessWidget {
   Category category;

@@ -1,6 +1,6 @@
 import 'package:news_app/data/dataSource/SourcesRemoteDataSource.dart';
+import 'package:news_app/domain/model/Source.dart';
 import 'package:news_app/domain/repository/SourcesRepositoryContract.dart';
-import 'package:news_app/model/Source.dart';
 
 class SourceRepositryImp extends SourcesRepositiryContract {
   SourcesDataSource dataSource;

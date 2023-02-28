@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:news_app/model/News.dart';
+import 'package:news_app/data/model/NewsDTO.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NewsItemDetails extends StatefulWidget {
@@ -47,7 +47,8 @@ class _NewsItemDetailsState extends State<NewsItemDetails> {
 
   @override
   Widget build(BuildContext context) {
-    final News argsNews = ModalRoute.of(context)?.settings.arguments as News;
+    final NewsDTO argsNews =
+        ModalRoute.of(context)?.settings.arguments as NewsDTO;
     return Scaffold(
       appBar: AppBar(
         title: Text(argsNews.title!),

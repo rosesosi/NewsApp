@@ -1,14 +1,14 @@
 import 'package:news_app/api/api_manager.dart';
 import 'package:news_app/base/base_navigator.dart';
 import 'package:news_app/base/base_viewModel.dart';
-import 'package:news_app/model/Source.dart';
+import 'package:news_app/data/model/SourceDTO.dart';
 
 abstract class NewsNavigator implements BaseNavigator {}
 
 ///////////////////////////////////////////////////////////////////
 
 class CategoryNewsListViewModel extends BaseViewModel<NewsNavigator> {
-  List<Source>? sources = null;
+  List<SourceDTO>? sources = null;
   String? errorMessage = null;
 
   void loadNewsSources(String categoryId) async {
@@ -16,7 +16,7 @@ class CategoryNewsListViewModel extends BaseViewModel<NewsNavigator> {
     sources = null;
     notifyListeners();
     try {
-      var response = await ApiManager.getSources(categoryId);
+      var response = await ApiManager.getInstance().getSources(categoryId);
       if (response.status == 'error') {
         errorMessage = response.message;
       } else {
